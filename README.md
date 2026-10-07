@@ -31,6 +31,20 @@ The project examines:
 
 These findings suggest areas for further investigation and marketing experiments. They do not establish broader market demand or explain what caused sales differences.
 
+## Visual Results
+
+### Total Sales by State
+![Total sales by state](images/sales-by-state.png)
+
+### Sales per Capita
+![Sales per capita by state](images/sales-per-capita.png)
+
+### Monthly Sales Trend
+![Monthly sales and trailing three-month moving average](images/monthly-sales-trend.png)
+
+### Regional Revenue Share
+![Regional share of sample sales revenue](images/regional-sales-share.png)
+
 ## Project Files
 The `code` folder contains five scripts:
 - `00_setup.sql`: Creates the database and loads data.
@@ -53,3 +67,6 @@ Use MySQL 8.0 or later. Open the scripts in MySQL Workbench and run them in numb
 
 ## Team
 Mei Qiong Xue, Yufei Cai, and Weimin Wu.
+
+## My Contribution
+I created the data visualizations and wrote approximately half of the SQL code, working with my teammates to analyze sales performance and communicate the findings.
