@@ -45,7 +45,7 @@ JOIN state_population p ON s.shipping_state = p.state
 ORDER BY per_capita_rank;
 
 -- Analysis 3: Advanced Aggregation - Revenue vs. Population Segments
--- Grouping states by population size to test correlation hypothesis.
+-- Compare average revenue across state population groups.
 SELECT 
     CASE
         WHEN p.population > 10000000 THEN 'High Pop (>10M)'
@@ -73,7 +73,7 @@ ORDER BY avg_revenue_per_state DESC;
 SELECT 
     DATE_FORMAT(o.order_date, '%Y-%m') as sales_month,
     SUM(oi.qty * oi.unit_price) as monthly_sales,
-    -- Window Function: 3-month centered moving average
+    -- Window Function: trailing average of current and two preceding monthly rows
     AVG(SUM(oi.qty * oi.unit_price)) OVER (
         ORDER BY DATE_FORMAT(o.order_date, '%Y-%m') 
         ROWS BETWEEN 2 PRECEDING AND CURRENT ROW
@@ -101,7 +101,7 @@ GROUP BY p.region
 ORDER BY total_revenue DESC;
 
 -- Analysis 6: Impact of Income on Spending
--- Directly tests the correlation between median income and customer spending habits (AOV).
+-- Compare AOV across shipping states' median-income tiers.
 WITH OrderValues AS (
     -- CTE: Calculates the total value for each order
     SELECT o.id, o.shipping_state, SUM(oi.qty * oi.unit_price) as order_total
